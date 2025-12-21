@@ -9,13 +9,13 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-[var(--border)] bg-white/95 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-[var(--border)] bg-[var(--charcoal)]/95 backdrop-blur">
       <div className="section-shell flex h-20 items-center justify-between">
         <Link href="/" className="flex flex-col leading-tight text-[var(--ink)]">
           <span className="text-[0.65rem] uppercase tracking-[0.4em] text-[var(--slate)]">
             IB
           </span>
-          <span className="text-xl font-semibold">Silver Works</span>
+          <span className="text-xl font-semibold">Gold & Silver Works</span>
         </Link>
         
         <div className="flex items-center gap-6">

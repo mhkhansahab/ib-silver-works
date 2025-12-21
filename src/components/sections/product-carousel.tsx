@@ -40,38 +40,38 @@ export function ProductCarousel() {
   const active = catalog[index];
 
   return (
-    <section id="products" className="bg-[var(--sand)]/20 px-6 py-16 md:py-24">
+    <section id="products" className="bg-[var(--dark-gray)]/20 px-6 py-16 md:py-24">
       <div className="section-shell mx-auto max-w-5xl">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-medium text-[var(--ink)] md:text-4xl">
+          <h2 className="text-3xl font-medium text-[var(--light-silver)] md:text-4xl">
             Our Collection
           </h2>
-          <p className="mt-4 text-[var(--slate)]">
+          <p className="mt-4 text-[var(--silver)]">
             Explore our range of verified silver bullion.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-3xl bg-white shadow-sm border border-[var(--border)]">
+        <div className="overflow-hidden rounded-3xl bg-[var(--charcoal)] shadow-sm border border-[var(--border)]">
           <div className="grid md:grid-cols-2">
-            <div className="flex flex-col justify-center p-8 md:p-12 bg-[var(--sand)]/10">
-              <span className="mb-2 text-sm font-medium text-[var(--accent)] uppercase tracking-wider">
+            <div className="flex flex-col justify-center p-8 md:p-12 bg-[var(--dark-gray)]/30">
+              <span className="mb-2 text-sm font-medium text-[var(--silver)] uppercase tracking-wider">
                 Featured Item
               </span>
-              <h3 className="mb-4 text-3xl font-medium text-[var(--ink)]">
+              <h3 className="mb-4 text-3xl font-medium text-[var(--light-silver)]">
                 {active.name}
               </h3>
-              <p className="mb-8 text-[var(--slate)] text-lg leading-relaxed">
+              <p className="mb-8 text-[var(--silver)] text-lg leading-relaxed">
                 {active.description}
               </p>
               
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="text-sm text-[var(--slate)] uppercase tracking-wide">Weight</div>
-                  <div className="text-xl font-medium text-[var(--ink)]">{active.weight}</div>
+                  <div className="text-sm text-[var(--silver)] uppercase tracking-wide">Weight</div>
+                  <div className="text-xl font-medium text-[var(--light-silver)]">{active.weight}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-[var(--slate)] uppercase tracking-wide">Purity</div>
-                  <div className="text-xl font-medium text-[var(--ink)]">{active.purity}</div>
+                  <div className="text-sm text-[var(--silver)] uppercase tracking-wide">Purity</div>
+                  <div className="text-xl font-medium text-[var(--light-silver)]">{active.purity}</div>
                 </div>
               </div>
             </div>
@@ -85,16 +85,16 @@ export function ProductCarousel() {
                     className={cn(
                       "w-full rounded-xl p-4 text-left transition-all duration-300",
                       idx === index
-                        ? "bg-[var(--sand)] border-transparent"
-                        : "hover:bg-[var(--sand)]/50 text-[var(--slate)]"
+                        ? "bg-[var(--dark-gray)] border-transparent"
+                        : "hover:bg-[var(--dark-gray)]/50 text-[var(--silver)]"
                     )}
                   >
                     <div className="flex items-center justify-between">
-                      <span className={cn("font-medium", idx === index ? "text-[var(--ink)]" : "")}>
+                      <span className={cn("font-medium", idx === index ? "text-[var(--light-silver)]" : "")}>
                         {product.name}
                       </span>
                       {idx === index && (
-                        <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
+                        <span className="h-2 w-2 rounded-full bg-[var(--silver)]" />
                       )}
                     </div>
                   </button>

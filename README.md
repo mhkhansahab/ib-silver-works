@@ -1,4 +1,4 @@
-## Silver Works
+## Gold & Silver Works
 
 Two-page Next.js 14 experience for silver-bar traders:
 

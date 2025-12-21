@@ -55,9 +55,9 @@ export default async function AdminPage() {
     <div className="flex min-h-[calc(100vh-6rem)] flex-col">
       <section className="flex-1 px-6 py-16">
         <div className="section-shell flex flex-col gap-10">
-          <div className="flex flex-col items-start justify-between gap-4 text-[var(--ink)] md:flex-row md:items-center">
+          <div className="flex flex-col items-start justify-between gap-4 text-[var(--light-silver)] md:flex-row md:items-center">
             <div>
-              <p className="text-xs uppercase tracking-[0.4em] text-[var(--slate)]">
+              <p className="text-xs uppercase tracking-[0.4em] text-[var(--silver)]">
                 Admin
               </p>
               <h1 className="text-4xl font-semibold">
@@ -68,22 +68,22 @@ export default async function AdminPage() {
           </div>
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <RegisterBarForm />
-            <div className="rounded-[28px] border border-[var(--border)] bg-white p-8 text-[var(--ink)]">
-              <p className="text-xs uppercase tracking-[0.4em] text-[var(--slate)]">
+            <div className="rounded-[28px] border border-[var(--border)] bg-[var(--charcoal)] p-8 text-[var(--light-silver)]">
+              <p className="text-xs uppercase tracking-[0.4em] text-[var(--silver)]">
                 Recent entries
               </p>
               <div className="mt-6 space-y-4">
                 {recentBars.length === 0 && (
-                  <p className="text-sm text-[var(--slate)]">
+                  <p className="text-sm text-[var(--silver)]">
                     No entries yet. Registered bars appear here.
                   </p>
                 )}
                 {recentBars.map((bar) => (
                   <div
                     key={bar.sku}
-                    className="rounded-2xl border border-[var(--border)] bg-[var(--sand)] p-4 text-sm text-[var(--ink)]"
+                    className="rounded-2xl border border-[var(--border)] bg-[var(--dark-gray)] p-4 text-sm text-[var(--light-silver)]"
                   >
-                    <p className="font-mono text-base text-[var(--accent)]">
+                    <p className="font-mono text-base text-[var(--silver)]">
                       {bar.sku}
                     </p>
                     <div className="mt-2 grid gap-2 sm:grid-cols-3">
@@ -91,7 +91,7 @@ export default async function AdminPage() {
                       <span>{bar.purity}‰</span>
                       <span>{bar.karat}k</span>
                     </div>
-                    <p className="mt-2 text-xs text-[var(--slate)]/80">
+                    <p className="mt-2 text-xs text-[var(--silver)]/80">
                       {new Date(bar.created_at).toLocaleString()}
                     </p>
                   </div>

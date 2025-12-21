@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Silver Works | IB",
+  title: "Gold & Silver Works | IB",
   description:
     "Modern verification suite for silver bar traders—list inventory, verify SKUs, and manage authenticity in one place.",
 };
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={spaceGrotesk.variable}>
-      <body className="bg-[var(--sand)] text-[var(--ink)] antialiased">
+      <body className="bg-[var(--black)] text-[var(--light-silver)] antialiased">
         <AppSessionProvider>
           <SiteHeader />
           <div className="pt-24">{children}</div>

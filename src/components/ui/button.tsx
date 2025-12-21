@@ -6,11 +6,11 @@ const baseClasses =
 
 const variantClasses = {
   primary:
-    "bg-[var(--ink)] text-white shadow-sm hover:bg-[#152130] focus-visible:outline-[#152130]",
+    "bg-[var(--light-silver)] text-[var(--black)] shadow-sm hover:bg-[var(--silver)] focus-visible:outline-[var(--silver)]",
   secondary:
-    "border border-[var(--ink)]/20 bg-white text-[var(--ink)] hover:bg-[#f3eee4] focus-visible:outline-[var(--ink)]/40",
+    "border border-[var(--silver)]/30 bg-[var(--charcoal)] text-[var(--light-silver)] hover:bg-[var(--dark-gray)] focus-visible:outline-[var(--silver)]/40",
   ghost:
-    "border border-transparent bg-transparent text-[var(--slate)] hover:bg-[var(--sand)] hover:text-[var(--ink)] focus-visible:outline-[var(--ink)]/30",
+    "border border-transparent bg-transparent text-[var(--silver)] hover:bg-[var(--dark-gray)] hover:text-[var(--light-silver)] focus-visible:outline-[var(--silver)]/30",
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
