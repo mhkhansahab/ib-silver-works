@@ -103,18 +103,16 @@ export function ProductCarousel() {
 
               <div className="mt-8 flex gap-4">
                 <Button
-                  variant="outline"
-                  size="icon"
+                  variant="secondary"
                   onClick={() => setIndex((prev) => (prev - 1 + catalog.length) % catalog.length)}
-                  className="rounded-full"
+                  className="h-10 w-10 rounded-full p-0"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
                 <Button
-                  variant="outline"
-                  size="icon"
+                  variant="secondary"
                   onClick={() => setIndex((prev) => (prev + 1) % catalog.length)}
-                  className="rounded-full"
+                  className="h-10 w-10 rounded-full p-0"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>

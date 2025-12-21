@@ -38,7 +38,7 @@ export async function verifySkuAction(
     });
 
     if (!parsed.success) {
-      return { status: "error", message: parsed.error.errors[0]?.message };
+      return { status: "error", message: parsed.error.issues[0]?.message };
     }
 
     const supabase = getSupabaseAdmin();
