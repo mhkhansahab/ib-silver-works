@@ -1,17 +1,28 @@
 import { HeroSection } from "@/components/sections/hero";
-import { ProductCarousel } from "@/components/sections/product-carousel";
-import { AboutSection } from "@/components/sections/about";
+import { SplitScroll } from "@/components/sections/split-scroll";
+import { ProductShowcase } from "@/components/sections/product-showcase";
+import { HowItWorks } from "@/components/sections/how-it-works";
+import { TrustSection } from "@/components/sections/trust-section";
+import { Ticker } from "@/components/sections/ticker";
 import { SiteFooter } from "@/components/sections/footer";
+import { SectionLabel } from "@/components/ui/section-label";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex-1">
+    <>
+      <SectionLabel />
+      <main>
         <HeroSection />
-        <ProductCarousel />
-        <AboutSection />
+        <hr className="section-rule" />
+        <SplitScroll />
+        <hr className="section-rule" />
+        <ProductShowcase />
+        <hr className="section-rule" />
+        <HowItWorks />
+        <TrustSection />
+        <SiteFooter />
       </main>
-      <SiteFooter />
-    </div>
+      <Ticker />
+    </>
   );
 }

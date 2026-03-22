@@ -40,7 +40,7 @@ export default async function AdminPage() {
 
   if (!session?.user?.isAdmin) {
     return (
-      <div className="flex min-h-[calc(100vh-6rem)] flex-col">
+      <div className="flex min-h-screen flex-col bg-dark pt-20">
         <section className="flex-1 px-6 py-20">
           <SignInCard />
         </section>
@@ -52,7 +52,7 @@ export default async function AdminPage() {
   const recentBars = await fetchRecentBars();
 
   return (
-    <div className="flex min-h-[calc(100vh-6rem)] flex-col">
+    <div className="flex min-h-screen flex-col bg-dark pt-20">
       <section className="flex-1 px-6 py-16">
         <div className="section-shell flex flex-col gap-10">
           <div className="flex flex-col items-start justify-between gap-4 text-[var(--light-silver)] md:flex-row md:items-center">

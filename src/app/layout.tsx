@@ -1,19 +1,41 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { AppSessionProvider } from "@/components/providers/session-provider";
 import { SiteHeader } from "@/components/layout/site-header";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
-const spaceGrotesk = Space_Grotesk({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Gold & Silver Works | IB",
+  title: "IB Metal Works",
   description:
-    "Modern verification suite for silver bar traders—list inventory, verify SKUs, and manage authenticity in one place.",
+    "Physical gold and silver, sourced with precision and backed by clear verification.",
+  icons: {
+    icon: "/fav-icon.webp",
+    shortcut: "/fav-icon.webp",
+    apple: "/fav-icon.webp",
+  },
 };
 
 export default function RootLayout({
@@ -22,11 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={spaceGrotesk.variable}>
-      <body className="bg-[var(--black)] text-[var(--light-silver)] antialiased">
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable} ${playfair.variable}`}
+    >
+      <body className="bg-ivory text-ink antialiased font-sans">
         <AppSessionProvider>
+          <CustomCursor />
           <SiteHeader />
-          <div className="pt-24">{children}</div>
+          {children}
         </AppSessionProvider>
       </body>
     </html>

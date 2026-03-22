@@ -2,15 +2,16 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-medium uppercase tracking-[0.15em] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 font-sans";
 
 const variantClasses = {
   primary:
-    "bg-[var(--light-silver)] text-[var(--black)] shadow-sm hover:bg-[var(--silver)] focus-visible:outline-[var(--silver)]",
+    "border border-ink bg-ink text-ivory hover:bg-transparent hover:text-ink focus-visible:outline-ink",
   secondary:
-    "border border-[var(--silver)]/30 bg-[var(--charcoal)] text-[var(--light-silver)] hover:bg-[var(--dark-gray)] focus-visible:outline-[var(--silver)]/40",
+    "border border-ink/30 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-ivory focus-visible:outline-ink/40",
   ghost:
-    "border border-transparent bg-transparent text-[var(--silver)] hover:bg-[var(--dark-gray)] hover:text-[var(--light-silver)] focus-visible:outline-[var(--silver)]/30",
+    "border border-transparent bg-transparent text-pewter hover:text-ink focus-visible:outline-pewter/30",
+  gold: "border border-gold bg-transparent text-gold hover:bg-gold hover:text-dark focus-visible:outline-gold",
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -38,4 +39,3 @@ export function buttonStyles(
 ) {
   return cn(baseClasses, variantClasses[variant], additional);
 }
-

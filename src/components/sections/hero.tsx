@@ -1,56 +1,68 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { buttonStyles } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="px-6 py-12 md:py-24">
-      <div className="section-shell mx-auto max-w-4xl text-center">
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[var(--dark-gray)]/50 px-4 py-1.5 text-sm font-medium text-[var(--silver)]">
-            <Sparkles className="h-4 w-4 text-[var(--silver)]" />
-            <span>Premium Silver Bars Built on Purity and Trust</span>
-          </div>
-          
-          <h1 className="text-4xl font-medium leading-tight text-[var(--light-silver)] md:text-6xl">
-            Crafted for Value. <br className="hidden md:block" />
-            <span className="text-[var(--silver)]">Designed to Shine.</span>
-          </h1>
+    <section
+      data-section="The Weight of Value"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-dark"
+    >
+      {/* Background video */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/hero-video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-          <div className="mx-auto max-w-2xl">
-            <p className="text-lg text-[var(--silver)] md:text-xl">
-              Discover the unmatched beauty of pure silver. Each bar is crafted with precision, purity, and lasting value. Whether you’re investing for the future, expanding your collection, or simply captivated by the shine of real silver, our bars are designed to elevate your portfolio with timeless elegance.
-            </p>
-          </div>
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(15, 13, 10, 0.55)" }}
+      />
 
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link 
-              href="/verify" 
-              className={buttonStyles(
-                "primary",
-                "min-w-[200px] px-8 py-6 text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-              )}
-            >
-              Verify Bar
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
+      {/* Main content */}
+      <div className="relative z-10 px-8 pb-[28vh] text-center">
+        <h1
+          className="font-display font-light leading-[0.95] text-ivory"
+          style={{ fontSize: "var(--hero-size)" }}
+        >
+          Gold doesn&apos;t guess.
+          <br />
+          <em className="font-accent italic text-gold">It endures.</em>
+        </h1>
+        <p className="mx-auto mt-8 max-w-lg font-sans text-lg leading-relaxed text-cream/70">
+          Physical precious metals, sourced with precision,
+          <br className="hidden md:block" />
+          verified with clarity.
+        </p>
+      </div>
 
-          <div className="pt-8">
-            <div className="grid grid-cols-2 gap-8 border-t border-[var(--border)] pt-8 sm:grid-cols-3">
-              {[
-                { label: "Verified Bars", value: "12k+" },
-                { label: "Partners", value: "18" },
-                { label: "Speed", value: "Instant" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-2xl font-semibold text-[var(--light-silver)]">{stat.value}</div>
-                  <div className="text-sm text-[var(--silver)]">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* 3D Gold Bar — acts as the CTA */}
+      <Link
+        href="/verify"
+        className="group absolute bottom-28 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-5 transition-transform duration-200 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+        aria-label="Verify your gold or silver bar"
+      >
+       
+
+        {/* Label — pill CTA */}
+        <span className="inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-gold/40 bg-dark/60 px-8 py-3 font-display text-xl font-light italic text-gold/90 shadow-[0_8px_28px_rgba(0,0,0,0.45)] backdrop-blur-md transition-[color,background-color,border-color,box-shadow] duration-300 ease-out group-hover:border-gold group-hover:bg-gold group-hover:text-dark group-hover:shadow-[0_12px_36px_rgba(201,168,76,0.3)]">
+          Verify Your Bar
+          <span
+            className="mt-0.5 block h-px w-5 shrink-0 bg-current transition-[width] duration-300 ease-out group-hover:w-10"
+            aria-hidden
+          />
+        </span>
+      </Link>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
+        <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-cream/50">
+          Scroll
+        </span>
+        <div className="h-8 w-px bg-gold/40" />
       </div>
     </section>
   );
