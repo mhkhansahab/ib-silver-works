@@ -19,37 +19,59 @@ export function RegisterBarForm() {
           Log inventory
         </p>
         <h2 className="text-3xl font-semibold">
-          Register a new bar
+          Register new bars
         </h2>
         <p className="text-sm text-[var(--silver)]">
-          SKU is generated automatically with SLV-YYYY-######## format.
+          SKUs are generated automatically with IB-####### format.
         </p>
       </div>
-      <form action={action} className="mt-8 grid gap-6 md:grid-cols-3">
+      <form action={action} className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        {/* Weight Field with Unit Selection */}
+        <label className="text-sm text-[var(--silver)] lg:col-span-1">
+          Weight
+          <div className="mt-2 flex">
+            <input
+              required
+              name="weight"
+              type="number"
+              step="0.001"
+              min="0"
+              className="w-full min-w-0 flex-1 rounded-l-2xl border-y border-l border-[var(--border)] bg-[var(--dark-gray)] px-4 py-3 text-base text-[var(--light-silver)] focus:border-[var(--silver)] focus:outline-none focus:ring-2 focus:ring-[var(--silver)]/30"
+            />
+            <select
+              name="weight_unit"
+              className="shrink-0 rounded-r-2xl border border-[var(--border)] bg-[var(--dark-gray)] px-4 py-3 text-base text-[var(--light-silver)] focus:border-[var(--silver)] focus:outline-none focus:ring-2 focus:ring-[var(--silver)]/30"
+            >
+              <option value="grams">Grams</option>
+              <option value="tola">Tola</option>
+            </select>
+          </div>
+        </label>
+
         {[
-          { name: "weight", label: "Weight (grams)" },
-          { name: "purity", label: "Purity (‰)" },
-          { name: "karat", label: "Karat" },
+          { name: "purity", label: "Purity (‰)", type: "number", step: "0.1", min: "0" },
+          { name: "quantity", label: "Quantity", type: "number", step: "1", min: "1", defaultValue: "1" },
         ].map((field) => (
-          <label key={field.name} className="text-sm text-[var(--silver)]">
+          <label key={field.name} className="text-sm text-[var(--silver)] lg:col-span-1">
             {field.label}
             <input
               required
               name={field.name}
-              type="number"
-              step="0.1"
-              min="0"
+              type={field.type}
+              step={field.step}
+              min={field.min}
+              defaultValue={field.defaultValue}
               className="mt-2 w-full rounded-2xl border border-[var(--border)] bg-[var(--dark-gray)] px-4 py-3 text-base text-[var(--light-silver)] focus:border-[var(--silver)] focus:outline-none focus:ring-2 focus:ring-[var(--silver)]/30"
             />
           </label>
         ))}
-        <div className="md:col-span-3">
+        <div className="md:col-span-2 lg:col-span-2">
           <Button
             type="submit"
             className="w-full justify-center"
             disabled={pending}
           >
-            {pending ? "Saving..." : "Generate SKU"}
+            {pending ? "Saving..." : "Generate SKUs"}
           </Button>
         </div>
       </form>
@@ -58,14 +80,11 @@ export function RegisterBarForm() {
       )}
       {state.status === "success" && (
         <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--dark-gray)] p-4 text-sm">
-          Bar registered as{" "}
           <span className="font-mono text-base text-[var(--silver)]">
-            {state.sku}
+            {state.message}
           </span>
-          .
         </div>
       )}
     </div>
   );
 }
-

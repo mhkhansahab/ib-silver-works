@@ -36,8 +36,8 @@ export function VerifyForm() {
             <input
               required
               name="sku"
-              placeholder="e.g., SLV-2025-12345678"
-              className="w-full rounded-2xl border border-gold/15 bg-[#1a1410] px-5 py-4 font-mono text-base uppercase tracking-[0.18em] text-cream placeholder:text-pewter/35 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/15 md:text-lg"
+              placeholder="e.g., IB-7860001"
+              className="w-full rounded-xl border border-[var(--border)] bg-[var(--dark-gray)] px-4 py-3 font-mono text-lg uppercase tracking-wider text-[var(--light-silver)] placeholder:text-[var(--silver)]/40 focus:border-[var(--silver)] focus:outline-none focus:ring-2 focus:ring-[var(--silver)]/20"
               autoComplete="off"
             />
           </div>
@@ -88,13 +88,13 @@ export function VerifyForm() {
                 <div className="flex justify-between rounded-2xl border border-gold/10 bg-[#17120d] px-4 py-4">
                   <dt className="text-pewter">Weight</dt>
                   <dd className="font-medium text-cream">
-                    {state.record.weight} g
+                    {state.record.weight} g ({Number((state.record.weight / 11.6638).toFixed(3))} tola)
                   </dd>
                 </div>
                 <div className="flex justify-between rounded-2xl border border-gold/10 bg-[#17120d] px-4 py-4">
                   <dt className="text-pewter">Purity</dt>
                   <dd className="font-medium text-cream">
-                    {state.record.purity / 10}%
+                    {state.record.purity}
                   </dd>
                 </div>
                 <div className="flex justify-between rounded-2xl border border-gold/10 bg-[#17120d] px-4 py-4">

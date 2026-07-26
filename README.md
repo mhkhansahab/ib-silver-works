@@ -66,7 +66,7 @@ create index if not exists silver_bars_year_idx on silver_bars (year, sequence d
 
 1. Visit `/admin`.
 2. Sign in with an allowlisted Google account.
-3. Enter weight (grams), purity (‰), karat. Submit → SKU `SLV-YYYY-########` is minted and stored.
+3. Enter weight (grams), purity (‰), karat. Submit → SKU `IB-#######` is minted and stored.
 4. Latest inserts render on the right for quick confirmation.
 
 ## Verification Flow

@@ -8,8 +8,8 @@ const schema = z.object({
     .string()
     .transform((value) => value.trim().toUpperCase())
     .pipe(
-      z.string().regex(/^SLV-\d{4}-\d{8}$/, {
-        message: "Use SLV-YYYY-######## format.",
+      z.string().regex(/^IB-\d{7,}$/, {
+        message: "Use IB-####### format.",
       }),
     ),
 });
@@ -23,7 +23,6 @@ export type VerifyActionState =
         sku: string;
         weight: number;
         purity: number;
-        karat: number;
         created_at: string;
       };
     };
@@ -44,7 +43,7 @@ export async function verifySkuAction(
     const supabase = getSupabaseAdmin();
     const { data, error } = await supabase
       .from("silver_bars")
-      .select("sku, weight, purity, karat, created_at")
+      .select("sku, weight, purity, created_at")
       .eq("sku", parsed.data.sku)
       .maybeSingle();
 
