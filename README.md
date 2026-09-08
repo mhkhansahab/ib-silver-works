@@ -77,6 +77,47 @@ create index if not exists silver_bars_year_idx on silver_bars (year, sequence d
 
 ## Production Checklist
 
+### Daily Supabase health check
+
+Vercel Cron calls `GET /api/cron/supabase-health` daily at `0 4 * * *`
+(04:00 UTC, approximately 09:00–09:59 Pakistan time on Hobby). Each call
+performs an uncached read of at most one ID from `silver_bars`. An empty table
+is healthy. This reduces inactivity risk but does not guarantee Supabase will
+never pause a free project.
+
+1. Generate a secret with `openssl rand -hex 32` and save it as `CRON_SECRET`
+   in the Vercel project's **Production** environment. Never commit the value
+   or use a `NEXT_PUBLIC_` prefix.
+2. Confirm `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are configured there.
+   Restore the project in Supabase's dashboard first if it is paused.
+3. Deploy through the existing production workflow. Vercel automatically sends
+   `Authorization: Bearer <CRON_SECRET>` when invoking the job.
+4. Open **Settings → Cron Jobs**, confirm the schedule, and trigger a manual run.
+   Check function logs for `Supabase health check` with status `200`, then
+   confirm the first scheduled execution the next day.
+
+For local testing, set the same variables in `.env.local`, run `npm run dev`,
+and call the endpoint with an authorization header using your local secret.
+For example, with `CRON_SECRET` also exported in your shell:
+
+```sh
+curl -i -H "Authorization: Bearer ${CRON_SECRET}" http://localhost:3000/api/cron/supabase-health
+```
+
+Successful reads return `200` and `{ "ok": true }`. Missing or incorrect
+authorization returns `401` without database access. Database errors, missing
+database configuration, and requests exceeding the 10-second database timeout
+return `503` and `{ "ok": false }`. Responses are not cached; logs include only
+status and duration, never credentials or records.
+
+Monitoring uses Vercel function logs; no external alerts or automatic Supabase
+restore are configured. Remove the `crons` entry from `vercel.json` and redeploy
+to stop the schedule.
+
+Run the isolated endpoint regression checks with `node --test tests/supabase-health.test.mjs`.
+
+### Application checks
+
 - Configure Google OAuth origin + redirect URLs.
 - Set all env vars in your hosting platform.
 - Optionally enable Supabase Row Level Security with service role restricted APIs.
